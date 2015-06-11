@@ -7,11 +7,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Security.Claims;
+using System.ComponentModel;
 
 namespace TicketSystem.Models
 {
     public class User : IdentityUser
     {
+        [DefaultValue(10)]
+        public int Points { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
