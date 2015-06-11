@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using TicketSystem.Web.Models;
 using TicketSystem.Models;
+using TicketSystem.Data;
 
 namespace TicketSystem.Web
 {
@@ -16,7 +17,7 @@ namespace TicketSystem.Web
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.CreatePerOwinContext(TicketSystemDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
