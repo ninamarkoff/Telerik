@@ -59,6 +59,7 @@
     <Compile Include="GenericRepository.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="ITicketSystemData.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TicketSystemData.cs" />
     <Compile Include="TicketSystemDbContext.cs" />
