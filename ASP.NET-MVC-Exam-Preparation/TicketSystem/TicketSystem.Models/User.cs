@@ -13,8 +13,42 @@ namespace TicketSystem.Models
 {
     public class User : IdentityUser
     {
+        private ICollection<Ticket> tickets;
+        private ICollection<Comment> comments;
+
+        public User()
+        {
+            this.tickets = new HashSet<Ticket>();
+            this.comments = new HashSet<Comment>();
+        }
+
+
         [DefaultValue(10)]
         public int Points { get; set; }
+
+        public virtual ICollection<Ticket> Tickets
+        {
+            get
+            {
+                return this.tickets;
+            }
+            set
+            {
+                this.tickets = value;
+            }
+        }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get
+            {
+                return this.comments;
+            }
+            set
+            {
+                this.comments = value;
+            }
+        }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
