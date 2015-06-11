@@ -11,6 +11,7 @@ namespace TicketSystem.Web.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using TicketSystem.Data;
+    using System.Data.Entity;
 
     public static class NinjectWebCommon 
     {
@@ -63,6 +64,7 @@ namespace TicketSystem.Web.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<ITicketSystemData>().To<TicketSystemData>();
+            kernel.Bind<DbContext>().To<TicketSystemDbContext>();
         }        
     }
 }
