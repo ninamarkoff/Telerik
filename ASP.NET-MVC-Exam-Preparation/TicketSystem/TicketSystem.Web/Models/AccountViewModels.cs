@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TicketSystem.Web.Models
 {
+    // TODO: Extract all classes in separate files;
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
