@@ -10,6 +10,8 @@ namespace TicketSystem.Data.Migrations
     using TicketSystem.Models;
     using TicketSystem.Common;
     using System.Collections.Generic;
+    using System.Reflection;
+    using System.IO;
 
     public sealed class Configuration : DbMigrationsConfiguration<TicketSystemDbContext>
     {
@@ -70,7 +72,61 @@ namespace TicketSystem.Data.Migrations
         }
         private void SeedCategoriesWithTicketsWithComments(TicketSystemDbContext context)
         {
+            if (context.Categories.Any())
+            {
+                return;
+            }
 
+            var image = this.GetSampleImage();
+            var users = context.Users.Take(10).ToList();
+            for (int i = 0; i < 5; i++)
+            {
+                var category = new Category
+                {
+                    Name = this.random.RandomString(5, 20)
+                };
+
+                for (int j = 0; j < 10; j++)
+                {                    
+                    var ticket = new Ticket
+                    {
+                        Author = users[this.random.RandomNumber(0, users.Count() - 1)],
+                        Description = this.random.RandomString(200, 500),
+                        Image = image,
+                        Priority = (PriorityType)this.random.RandomNumber(0,2)
+                    };
+
+                    for (int k = 0; k < 5; k++)
+                    {
+                        var comment = new Comment
+                        {
+                            Author = users[this.random.RandomNumber(0, users.Count() - 1)],
+                            Content = this.random.RandomString(100, 200)
+                        };
+
+                        ticket.Comments.Add(comment);
+                    }
+
+                    category.Tickets.Add(ticket);
+                }
+
+                context.Categories.Add(category);
+                context.SaveChanges();
+            }
+        }
+
+        private Image GetSampleImage()
+        {
+            var directory = AssemblyHelpers.GetDirectoryForAssembly(Assembly.GetExecutingAssembly());
+
+            var file = File.ReadAllBytes(directory + "/Migrations/Imgs/cat.jpg");
+            var image = new Image
+            {
+                Content = file,
+                FileExtension = "jpg"
+            };
+
+            return image;
         }
     }
 }
