@@ -23,7 +23,7 @@
                 @Html.ActionLink("Ticket System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" id="menu">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
@@ -47,5 +47,10 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/kendo")
     @RenderSection("scripts", required: false)
+    <script>
+        $(function () {
+            $("#menu").kendoMenu();
+        })
+    </script>
 </body>
 </html>
