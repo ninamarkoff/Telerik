@@ -69,6 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TicketSystem.Common\TicketSystem.Common.csproj">
+      <Project>{f1efc371-34f0-420f-a2de-22b23ffd8003}</Project>
+      <Name>TicketSystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TicketSystem.Models\TicketSystem.Models.csproj">
       <Project>{d3f15a62-a2ec-4d9a-bd2f-e3242a4cc7ac}</Project>
       <Name>TicketSystem.Models</Name>
