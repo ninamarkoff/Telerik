@@ -35,6 +35,11 @@ namespace TicketSystem.Data.Migrations
 
         private void SeedUsers(TicketSystemDbContext context)
         {
+            if (context.Users.Any())
+            {
+                return;
+            }
+
             for (int i = 0; i < 10; i++)
             {
                 var user = new User
@@ -44,11 +49,17 @@ namespace TicketSystem.Data.Migrations
                     UserName = this.random.RandomString(6,16)
                     };
 
-                this.userManager.Create(user, "123456");
-
-                this.userManager.AddToRole(user.Id, GlobalConstants.AdminRole);
+                this.userManager.Create(user, "123456");               
             }
 
+            var adminUser = new User
+            {
+                Email = "admin@mysite.com",
+                UserName = "Administrator"
+            };
+
+            this.userManager.Create(adminUser, "123456");
+            this.userManager.AddToRole(adminUser.Id, GlobalConstants.AdminRole);
 
         }
 
