@@ -20,16 +20,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Ticket System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Ticket System", "Index", "Home", new { area = string.Empty }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" id="menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
                     @if (User.Identity.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Add Ticket", "Add", "Tickets")</li>
-                        <li>@Html.ActionLink("View All", "All", "Tickets")</li>
+                        <li>@Html.ActionLink("Add Ticket", "Add", "Tickets", new { area = string.Empty }, null)</li>
+                        <li>@Html.ActionLink("View All", "All", "Tickets", new { area = string.Empty }, null)</li>
+
+                        if (User.IsInRole(GlobalConstants.AdminRole))
+                        {
+                            <li>
+                                Administration
+                                <ul>
+                                    <li>@Html.ActionLink("Comments", "Index", "Comments", new { area = "Administration"}, null)</li>
+                                    <li>@Html.ActionLink("Categories", "Index", "Categories", new { area = "Administration" }, null)</li>
+                                </ul>
+                            </li>
+
+                        }
                     }
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

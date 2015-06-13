@@ -30,5 +30,12 @@ namespace TicketSystem.Web.Controllers
         {
             return View();
         }
+
+        [ChildActionOnly]
+        [OutputCache(Duration = 60 * 60)]
+        public ActionResult MostCommentedTickets()
+        {
+            return PartialView("_MostCommentedTicketsPartial", this.homeServices.GetIndexViewModel(6));
+        }
     }
 }
