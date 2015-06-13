@@ -1,0 +1,29 @@
+﻿@using TicketSystem.Web.ViewModels.Tickets
+@{
+    ViewBag.Title = "All";
+}
+
+@(Html.Kendo()
+.ListView<ListTicketViewModel>()
+.TagName("div")
+.Name("all-tickets")
+.Pageable()
+.ClientTemplateId("all-tickets-template")
+.DataSource(dataSource => 
+    {
+        dataSource
+            .ServerOperation(true)
+            .PageSize(5)
+            .Read(read => read.Action("ReadTickets", "Tickets"));
+    }))
+
+<script id="all-tickets-template" type="text/x-kendo-tmpl">
+    <div class="row">
+        <div class="col-md-6">
+            #= Id #
+        </div>
+        <div class="col-md-6">
+            #= TicketTitle #
+        </div>
+    </div>
+</script>

@@ -10,6 +10,8 @@ using TicketSystem.Web.ViewModels.Tickets;
 using TicketSystem.Models;
 using AutoMapper;
 using System.IO;
+using Kendo.Mvc.UI;
+using Kendo.Mvc.Extensions;
 
 namespace TicketSystem.Web.Controllers
 {
@@ -22,6 +24,25 @@ namespace TicketSystem.Web.Controllers
         }
 
         [Authorize]
+        public ActionResult All()
+        {
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult ReadTickets([DataSourceRequest]DataSourceRequest request)
+        {
+            var tickets = this.Data.Tickets
+                .All()
+                .Project()
+                .To<ListTicketViewModel>();
+
+            return Json(tickets.ToDataSourceResult(request));
+                
+        }
+
+        [Authorize]       
         public ActionResult Add()
         {
             var addTicketViewModel = new AddTicketViewModel
@@ -67,7 +88,7 @@ namespace TicketSystem.Web.Controllers
                 this.Data.Tickets.Add(dbTicket);
                 this.Data.SaveChanges();
 
-                return RedirectToAction("Add", "Tickets");
+                return RedirectToAction("All", "Tickets");
             }
 
             ticket.Categories = this.Data.Categories
