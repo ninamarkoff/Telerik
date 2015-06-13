@@ -7,23 +7,87 @@ using TicketSystem.Data;
 
 using AutoMapper.QueryableExtensions;
 using TicketSystem.Web.ViewModels.Tickets;
+using TicketSystem.Models;
+using AutoMapper;
+using System.IO;
 
 namespace TicketSystem.Web.Controllers
 {
     public class TicketsController : BaseController
     {
-       public TicketsController(ITicketSystemData data):
-           base(data)
+        public TicketsController(ITicketSystemData data) :
+            base(data)
         {
 
         }
+
+        [Authorize]
+        public ActionResult Add()
+        {
+            var addTicketViewModel = new AddTicketViewModel
+            {
+                Categories = this.Data.Categories
+                .All()
+                .Select(c => new SelectListItem
+                {
+                    Value = c.Id.ToString(),
+                    Text = c.Name
+                })
+            };
+
+            return View(addTicketViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult Add(AddTicketViewModel ticket)
+        {
+            if (ticket != null && ModelState.IsValid)
+            {
+                var dbTicket = Mapper.Map<Ticket>(ticket);
+                dbTicket.Author = this.UserProfile;
+
+                if (ticket.UploadedImage != null)
+                {
+                    using (var memory = new MemoryStream())
+                    {
+                        ticket.UploadedImage.InputStream.CopyTo(memory);
+                        var content = memory.GetBuffer();
+
+                        dbTicket.Image = new Image
+                        {
+                            Content = content,
+                            FileExtension = ticket.UploadedImage.FileName.Split(new[] { '.' }).Last()
+                        };
+                    }
+                }
+               
+
+                this.Data.Tickets.Add(dbTicket);
+                this.Data.SaveChanges();
+
+                return RedirectToAction("All", "Tickets");
+            }
+
+            ticket.Categories = this.Data.Categories
+               .All()
+               .Select(c => new SelectListItem
+               {
+                   Value = c.Id.ToString(),
+                   Text = c.Name
+               });
+
+            return View(ticket);
+        }
+
 
         public ActionResult Details(int id)
         {
             var ticket = this.Data
                 .Tickets
                 .All()
-                .Where( t => t.Id == id)
+                .Where(t => t.Id == id)
                 .Project()
                 .To<TicketDetailsViewModel>()
                 .FirstOrDefault();
