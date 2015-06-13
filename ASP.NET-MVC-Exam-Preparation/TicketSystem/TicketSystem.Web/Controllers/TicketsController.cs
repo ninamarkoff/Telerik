@@ -67,7 +67,7 @@ namespace TicketSystem.Web.Controllers
                 this.Data.Tickets.Add(dbTicket);
                 this.Data.SaveChanges();
 
-                return RedirectToAction("All", "Tickets");
+                return RedirectToAction("Add", "Tickets");
             }
 
             ticket.Categories = this.Data.Categories

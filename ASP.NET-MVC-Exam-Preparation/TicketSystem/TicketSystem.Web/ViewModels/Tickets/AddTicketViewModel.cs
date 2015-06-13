@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using TicketSystem.Models;
 using TicketSystem.Web.Infrastructure.Mapping;
+using TicketSystem.Web.Infrastructure.Validation;
 
 namespace TicketSystem.Web.ViewModels.Tickets
 {
@@ -14,7 +15,7 @@ namespace TicketSystem.Web.ViewModels.Tickets
         [UIHint("Enum")]
         public PriorityType Priority { get; set; }
 
-
+        [DoesNotContain("Bug")]
         [Required]
         [StringLength(50)]
         [UIHint("SingleLineText")]
