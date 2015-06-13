@@ -24,6 +24,10 @@ namespace TicketSystem.Models
         [DefaultValue(PriorityType.Medium)]
         public PriorityType Priority { get; set; }
 
+        [Required]
+        [StringLength(50)]
+        public string Title { get; set; }
+
         public string AuthorId { get; set; }
 
         public User Author { get; set; }

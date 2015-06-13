@@ -91,6 +91,7 @@ namespace TicketSystem.Data.Migrations
                     var ticket = new Ticket
                     {
                         Author = users[this.random.RandomNumber(0, users.Count() - 1)],
+                        Title = this.random.RandomString(5, 40),
                         Description = this.random.RandomString(200, 500),
                         Image = image,
                         Priority = (PriorityType)this.random.RandomNumber(0,2)

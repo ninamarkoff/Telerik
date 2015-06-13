@@ -12,6 +12,8 @@ namespace TicketSystem.Web.App_Start
     using Ninject.Web.Common;
     using TicketSystem.Data;
     using System.Data.Entity;
+    using TicketSystem.Web.Infrastructure.Services.Contracts;
+    using TicketSystem.Web.Infrastructure.Services;
 
     public static class NinjectWebCommon 
     {
@@ -65,6 +67,8 @@ namespace TicketSystem.Web.App_Start
         {
             kernel.Bind<ITicketSystemData>().To<TicketSystemData>();
             kernel.Bind<DbContext>().To<TicketSystemDbContext>();
+
+            kernel.Bind<IHomeServices>().To<HomeServices>();
         }        
     }
 }

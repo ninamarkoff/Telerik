@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace TicketSystem.Web.Models
+namespace TicketSystem.Web.ViewModels
 {
     // TODO: Extract all classes in separate files;
     public class ExternalLoginConfirmationViewModel

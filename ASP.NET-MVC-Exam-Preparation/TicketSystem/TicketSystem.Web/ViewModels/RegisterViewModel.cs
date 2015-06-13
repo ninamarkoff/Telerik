@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace TicketSystem.Web.Models
+namespace TicketSystem.Web.ViewModels
 {
     public class RegisterViewModel
     {

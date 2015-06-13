@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using TicketSystem.Web.Models;
+using TicketSystem.Web.ViewModels;
 using TicketSystem.Models;
 
 namespace TicketSystem.Web.Controllers

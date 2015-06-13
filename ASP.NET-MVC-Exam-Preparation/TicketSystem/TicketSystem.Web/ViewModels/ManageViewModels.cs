@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
-namespace TicketSystem.Web.Models
+namespace TicketSystem.Web.ViewModels
 {
     public class IndexViewModel
     {
