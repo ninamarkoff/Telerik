@@ -14,6 +14,8 @@ namespace TicketSystem.Web.App_Start
     using System.Data.Entity;
     using TicketSystem.Web.Infrastructure.Services.Contracts;
     using TicketSystem.Web.Infrastructure.Services;
+    using TicketSystem.Web.Infrastructure.Caching;
+    using TicketSystem.Web.Infrastructure.Populators;
 
     public static class NinjectWebCommon 
     {
@@ -68,7 +70,10 @@ namespace TicketSystem.Web.App_Start
             kernel.Bind<ITicketSystemData>().To<TicketSystemData>();
             kernel.Bind<DbContext>().To<TicketSystemDbContext>();
 
+            kernel.Bind<ICacheService>().To<InMemoryCache>();
+
             kernel.Bind<IHomeServices>().To<HomeServices>();
+            kernel.Bind<IDropDownListPopulator>().To<DropDownListPopulator>();
         }        
     }
 }

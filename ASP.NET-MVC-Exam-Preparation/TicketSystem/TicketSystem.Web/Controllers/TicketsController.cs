@@ -13,48 +13,50 @@ using AutoMapper;
 using System.IO;
 using Kendo.Mvc.UI;
 using Kendo.Mvc.Extensions;
+using TicketSystem.Web.Infrastructure.Populators;
 
 namespace TicketSystem.Web.Controllers
 {
     public class TicketsController : BaseController
     {
-        public TicketsController(ITicketSystemData data) :
+        private IDropDownListPopulator populator;
+        public TicketsController(ITicketSystemData data, IDropDownListPopulator populator) :
             base(data)
         {
-
+            this.populator = populator;
         }
 
         [Authorize]
-        public ActionResult All()
+        public ActionResult All(int? category)
         {
-            return View();
+            return View(category);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult ReadTickets([DataSourceRequest]DataSourceRequest request)
+        public ActionResult ReadTickets([DataSourceRequest]DataSourceRequest request, int? category)
         {
-            var tickets = this.Data.Tickets
-                .All()
+            var ticketsQuery = this.Data.Tickets.All();
+
+            if (category != null)
+            {
+                ticketsQuery = ticketsQuery.Where(t => t.CategoryId == category.Value);
+            }
+            
+            var tickets = ticketsQuery
                 .Project()
                 .To<ListTicketViewModel>();
 
             return Json(tickets.ToDataSourceResult(request));
-                
+
         }
 
-        [Authorize]       
+        [Authorize]
         public ActionResult Add()
         {
             var addTicketViewModel = new AddTicketViewModel
             {
-                Categories = this.Data.Categories
-                .All()
-                .Select(c => new SelectListItem
-                {
-                    Value = c.Id.ToString(),
-                    Text = c.Name
-                })
+                Categories = this.populator.GetCategories()
             };
 
             return View(addTicketViewModel);
@@ -84,7 +86,7 @@ namespace TicketSystem.Web.Controllers
                         };
                     }
                 }
-               
+
 
                 this.Data.Tickets.Add(dbTicket);
                 this.Data.SaveChanges();
@@ -92,13 +94,7 @@ namespace TicketSystem.Web.Controllers
                 return RedirectToAction("All", "Tickets");
             }
 
-            ticket.Categories = this.Data.Categories
-               .All()
-               .Select(c => new SelectListItem
-               {
-                   Value = c.Id.ToString(),
-                   Text = c.Name
-               });
+            ticket.Categories = this.populator.GetCategories();
 
             return View(ticket);
         }
@@ -141,6 +137,11 @@ namespace TicketSystem.Web.Controllers
             }
 
             return File(image.Content, "image/" + image.FileExtension);
+        }
+
+        public ActionResult GetCategories()
+        {
+            return Json(this.populator.GetCategories(), JsonRequestBehavior.AllowGet);
         }
     }
 }
