@@ -1,4 +1,6 @@
-﻿@model TicketSystem.Web.ViewModels.Tickets.TicketDetailsViewModel
+﻿@using TicketSystem.Web.ViewModels.Comments
+@using TicketSystem.Web.ViewModels.Tickets
+@model TicketSystem.Web.ViewModels.Tickets.TicketDetailsViewModel
 @{
     ViewBag.Title = "Ticket Details " + Model.Title;
 }
@@ -29,10 +31,23 @@
     </div>
 </div>
 
-@foreach (var comment in Model.Comments)
+<br/>
+
+@if (User.Identity.IsAuthenticated)
 {
-    <div class="row" style="word-wrap: break-word">
-        <strong>@comment.AuthorName: </strong> @comment.Content
-    </div>
-    <br />
+   @Html.Partial("_PostCommentPartial", new PostCommentViewModel(Model.Id))
+}
+
+
+<div id="comments">
+
+    @foreach (var comment in Model.Comments)
+    {
+       @Html.Partial("_CommentPartial", comment)
+    }
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryajax")
+    @Scripts.Render("~/bundles/jqueryval")
 }

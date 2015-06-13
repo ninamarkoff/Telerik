@@ -5,7 +5,7 @@ using System.Web;
 using TicketSystem.Models;
 using TicketSystem.Web.Infrastructure.Mapping;
 
-namespace TicketSystem.Web.ViewModels.Tickets
+namespace TicketSystem.Web.ViewModels.Comments
 {
     public class CommentViewModel : IMapFrom<Comment>, IHaveCustomMappings
     {

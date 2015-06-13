@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TicketSystem.Data;
 
 using AutoMapper.QueryableExtensions;
+using TicketSystem.Web.ViewModels.Comments;
 using TicketSystem.Web.ViewModels.Tickets;
 using TicketSystem.Models;
 using AutoMapper;
@@ -122,6 +123,7 @@ namespace TicketSystem.Web.Controllers
                 .Comments
                 .All()
                 .Where(t => t.TicketId == id)
+                .OrderByDescending(c => c.Id)
                 .Project()
                 .To<CommentViewModel>()
                 .ToList();

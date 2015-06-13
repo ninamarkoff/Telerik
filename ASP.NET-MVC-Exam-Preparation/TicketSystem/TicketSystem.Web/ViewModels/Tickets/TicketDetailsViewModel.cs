@@ -6,6 +6,7 @@ using TicketSystem.Models;
 using TicketSystem.Web.Infrastructure.Mapping;
 
 using AutoMapper.QueryableExtensions;
+using TicketSystem.Web.ViewModels.Comments;
 
 namespace TicketSystem.Web.ViewModels.Tickets
 {

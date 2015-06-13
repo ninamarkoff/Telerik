@@ -17,7 +17,7 @@ namespace TicketSystem.Web.ViewModels.Tickets
 
         public string AuthorUserName { get; set; }
 
-        public PriorityType Priority { get; set; }
+        public string Priority { get; set; }
 
 
         public void CreateMappings(AutoMapper.IConfiguration configuration)
@@ -26,6 +26,7 @@ namespace TicketSystem.Web.ViewModels.Tickets
                 .ForMember(m => m.TicketTitle, opt => opt.MapFrom(t => t.Title))
                 .ForMember(m => m.CategoryName, opt => opt.MapFrom(t => t.Category.Name))
                 .ForMember(m => m.AuthorUserName, opt => opt.MapFrom(t => t.Author.UserName))
+                .ForMember(m => m.Priority, opt => opt.MapFrom(t => t.Priority.ToString()))
                 .ReverseMap();
         }
     }
