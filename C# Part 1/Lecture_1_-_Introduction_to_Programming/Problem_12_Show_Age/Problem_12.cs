@@ -2,7 +2,7 @@
 
 //Problem 12: Write a program to read your age from the console and print how old you will be after 10 years
 
-public class Program
+public class ShowAge
 {
     public static void Main()
     {
