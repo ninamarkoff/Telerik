@@ -10,9 +10,16 @@ public class Circle
     {
         double circleRadius;
         bool isCircleRadiusCorrect = double.TryParse(Console.ReadLine(), out circleRadius);
-        Console.WriteLine("The circle with radius {0} has perimeter={1} and area={2}", 
-            circleRadius, 2*Math.PI*circleRadius, Math.PI*circleRadius*circleRadius);
 
+        if (isCircleRadiusCorrect)
+        {
+            Console.WriteLine("The circle with radius {0} has perimeter={1} and area={2}",
+            circleRadius, 2 * Math.PI * circleRadius, Math.PI * circleRadius * circleRadius);
+        }
+        else
+        {
+            Console.WriteLine("The input data is not correct!");
+        }
     }
 }
 

@@ -8,11 +8,9 @@ public class SumOfThreeInts
     public static void Main()
     {
         int num1, num2, num3;
-        bool isNum1Correct, isNum2Correct, isNum3Correct;
-
-        isNum1Correct = int.TryParse(Console.ReadLine(), out num1);
-        isNum2Correct = int.TryParse(Console.ReadLine(), out num2);
-        isNum3Correct = int.TryParse(Console.ReadLine(), out num3);
+        bool isNum1Correct = int.TryParse(Console.ReadLine(), out num1);
+        bool isNum2Correct = int.TryParse(Console.ReadLine(), out num2);
+        bool isNum3Correct = int.TryParse(Console.ReadLine(), out num3);
 
         if (isNum1Correct && isNum2Correct && isNum3Correct)
         {
@@ -20,9 +18,7 @@ public class SumOfThreeInts
         }
         else
         {
-            Console.WriteLine("The input data is not in correct format");
+            Console.WriteLine("The input data is invalid!");
         }
-        
     }
 }
-
