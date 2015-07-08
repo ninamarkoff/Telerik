@@ -1,0 +1,29 @@
+Line 1: using System;
+Line 2: using System.Collections.Generic;
+Line 3: using System.IO;
+Line 4: /* Problem 3, Lecture 7:
+Line 5: * Write a program that reads a text file and inserts line numbers in front
+Line 6: * of each of its lines. The result should be written to another text file. */
+Line 7: class InsertLineNumbers
+Line 8: {
+Line 9:     static void Main()
+Line 10:     {
+Line 11:         StreamReader reader = new StreamReader(@"..\..\InsertLineNumbers.cs");
+Line 12:         StreamWriter writer = new StreamWriter(@"..\..\TextFile.txt");
+Line 13:         using (reader)
+Line 14:         {
+Line 15:             using (writer)
+Line 16:             {
+Line 17:                 int lineNumber = 1;
+Line 18:                 string line = reader.ReadLine();
+Line 19:                 while (line != null)
+Line 20:                 {
+Line 21:                     writer.WriteLine("Line {0}: {1}", lineNumber, line);
+Line 22:                     line = reader.ReadLine();
+Line 23:                     lineNumber++;
+Line 24:                 }
+Line 25:             }
+Line 26:         }
+Line 27: 
+Line 28:     }
+Line 29: }

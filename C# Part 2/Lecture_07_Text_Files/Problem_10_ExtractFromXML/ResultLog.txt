@@ -1,0 +1,112 @@
+2009-05-21T00:00:00
+1242878400161
+323
+com.ibm.is.auditing
+FINE
+51
+LOGIN (InformationServerSystemUser): UserID="InformationServerSystemUser",
+Client="Server client", Origin="SwordIFS", 
+SessionID="34BADF15-ABA5-4FA9-AA7D-68D26402C2D6"
+info.audit.session.LOGIN
+com.ascential.acs.auditing.server.impl.resources.StringData
+InformationServerSystemUser
+InformationServerSystemUser
+Server client
+SwordIFS
+34BADF15-ABA5-4FA9-AA7D-68D26402C2D6
+2009-05-21T00:00:04
+1242878404458
+324
+com.ibm.is.auditing
+FINE
+51
+LOGOUT (InformationServerSystemUser): UserID="InformationServerSystemUser", 
+Client="Server client", Origin="SwordIFS", 
+SessionID="34BADF15-ABA5-4FA9-AA7D-68D26402C2D6"
+info.audit.session.LOGOUT
+com.ascential.acs.auditing.server.impl.resources.StringData
+InformationServerSystemUser
+InformationServerSystemUser
+Server client
+SwordIFS
+34BADF15-ABA5-4FA9-AA7D-68D26402C2D6
+2009-05-21T16:24:50
+1242937490614
+351
+com.ibm.is.auditing
+INFO
+46
+LOGIN (admin): UserID="admin", Client="Web Console", Origin="localhost",
+SessionID="1C8D5CFD-269B-400F-8187-788D93681B09"
+info.audit.session.LOGIN
+com.ascential.acs.auditing.server.impl.resources.StringData
+admin
+admin
+Web Console
+localhost
+1C8D5CFD-269B-400F-8187-788D93681B09
+2009-05-21T16:27:24
+1242937644348
+370
+com.ibm.is.auditing
+INFO
+46
+ADD_USER (admin): UserID="ppds1", LastName="PersonDS1",
+FirstName="Project"
+info.audit.user.ADD_USER
+com.ascential.acs.auditing.server.impl.resources.StringData
+admin
+ppds1
+PersonDS1
+Project
+2009-05-21T16:27:24
+1242937644645
+371
+com.ibm.is.auditing
+INFO
+46
+ASSIGN_USER_ROLES (admin): UserIDs="ppds1", RoleIDs="SuiteUser"
+info.audit.role.ASSIGN_USER_ROLES
+com.ascential.acs.auditing.server.impl.resources.StringData
+admin
+ppds1
+SuiteUser
+2009-05-21T16:27:24
+1242937644801
+372
+com.ibm.is.auditing
+INFO
+46
+ASSIGN_USER_ROLES (admin): UserIDs="ppds1", RoleIDs="DataStageAdmin, 
+DataStageUser"
+info.audit.role.ASSIGN_USER_ROLES
+com.ascential.acs.auditing.server.impl.resources.StringData
+admin
+ppds1
+DataStageAdmin, DataStageUser
+2009-05-21T16:27:24
+1242937644973
+373
+com.ibm.is.auditing
+INFO
+46
+SET_CREDENTIAL (admin): UserID="ppds1"
+info.audit.user.SET_CREDENTIAL
+com.ascential.acs.auditing.server.impl.resources.StringData
+admin
+ppds1
+2009-05-21T16:27:53
+1242937673989
+375
+com.ibm.is.auditing
+INFO
+45
+LOGOUT (admin): UserID="admin", Client="Web Console", Origin="localhost",
+SessionID="1C8D5CFD-269B-400F-8187-788D93681B09"
+info.audit.session.LOGOUT
+com.ascential.acs.auditing.server.impl.resources.StringData
+admin
+admin
+Web Console
+localhost
+1C8D5CFD-269B-400F-8187-788D93681B09

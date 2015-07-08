@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+<date>2009-05-21T00:00:00</date>
+<millis>1242878400161</millis>
+<sequence>323</sequence>
+<logger>com.ibm.is.auditing</logger>
+<level>FINE</level>
+<thread>51</thread>
+<message>LOGIN (InformationServerSystemUser): UserID="InformationServerSystemUser",
+Client="Server client", Origin="SwordIFS", 
+SessionID="34BADF15-ABA5-4FA9-AA7D-68D26402C2D6"</message>
+<key>info.audit.session.LOGIN</key>
+<catalog>com.ascential.acs.auditing.server.impl.resources.StringData</catalog>
+<param>InformationServerSystemUser</param>
+<param>InformationServerSystemUser</param>
+<param>Server client</param>
+<param>SwordIFS</param>
+<param>34BADF15-ABA5-4FA9-AA7D-68D26402C2D6</param>
+</record>
+<record>
+<date>2009-05-21T00:00:04</date>
+<millis>1242878404458</millis>
+<sequence>324</sequence>
+<logger>com.ibm.is.auditing</logger>
+<level>FINE</level>
+<thread>51</thread>
+<message>LOGOUT (InformationServerSystemUser): UserID="InformationServerSystemUser", 
+Client="Server client", Origin="SwordIFS", 
+SessionID="34BADF15-ABA5-4FA9-AA7D-68D26402C2D6"</message>
+<key>info.audit.session.LOGOUT</key>
+<catalog>com.ascential.acs.auditing.server.impl.resources.StringData</catalog>
+<param>InformationServerSystemUser</param>
+<param>InformationServerSystemUser</param>
+<param>Server client</param>
+<param>SwordIFS</param>
+<param>34BADF15-ABA5-4FA9-AA7D-68D26402C2D6</param>
+</record>
+<record>
+<date>2009-05-21T16:24:50</date>
+<millis>1242937490614</millis>
+<sequence>351</sequence>
+<logger>com.ibm.is.auditing</logger>
+<level>INFO</level>
+<thread>46</thread>
+<message>LOGIN (admin): UserID="admin", Client="Web Console", Origin="localhost",
+SessionID="1C8D5CFD-269B-400F-8187-788D93681B09"</message>
+<key>info.audit.session.LOGIN</key>
+<catalog>com.ascential.acs.auditing.server.impl.resources.StringData</catalog>
+<param>admin</param>
+<param>admin</param>
+<param>Web Console</param>
+<param>localhost</param>
+<param>1C8D5CFD-269B-400F-8187-788D93681B09</param>
+</record>
+<record>
+<date>2009-05-21T16:27:24</date>
+<millis>1242937644348</millis>
+<sequence>370</sequence>
+<logger>com.ibm.is.auditing</logger>
+<level>INFO</level>
+<thread>46</thread>
+<message>ADD_USER (admin): UserID="ppds1", LastName="PersonDS1",
+FirstName="Project"</message>
+<key>info.audit.user.ADD_USER</key>
+<catalog>com.ascential.acs.auditing.server.impl.resources.StringData</catalog>
+<param>admin</param>
+<param>ppds1</param>
+<param>PersonDS1</param>
+<param>Project</param>
+</record>
+<record>
+<date>2009-05-21T16:27:24</date>
+<millis>1242937644645</millis>
+<sequence>371</sequence>
+<logger>com.ibm.is.auditing</logger>
+<level>INFO</level>
+<thread>46</thread>
+<message>ASSIGN_USER_ROLES (admin): UserIDs="ppds1", RoleIDs="SuiteUser"</message>
+<key>info.audit.role.ASSIGN_USER_ROLES</key>
+<catalog>com.ascential.acs.auditing.server.impl.resources.StringData</catalog>
+<param>admin</param>
+<param>ppds1</param>
+<param>SuiteUser</param>
+</record>
+<record>
+<date>2009-05-21T16:27:24</date>
+<millis>1242937644801</millis>
+<sequence>372</sequence>
+<logger>com.ibm.is.auditing</logger>
+<level>INFO</level>
+<thread>46</thread>
+<message>ASSIGN_USER_ROLES (admin): UserIDs="ppds1", RoleIDs="DataStageAdmin, 
+DataStageUser"</message>
+<key>info.audit.role.ASSIGN_USER_ROLES</key>
+<catalog>com.ascential.acs.auditing.server.impl.resources.StringData</catalog>
+<param>admin</param>
+<param>ppds1</param>
+<param>DataStageAdmin, DataStageUser</param>
+</record>
+<record>
+<date>2009-05-21T16:27:24</date>
+<millis>1242937644973</millis>
+<sequence>373</sequence>
+<logger>com.ibm.is.auditing</logger>
+<level>INFO</level>
+<thread>46</thread>
+<message>SET_CREDENTIAL (admin): UserID="ppds1"</message>
+<key>info.audit.user.SET_CREDENTIAL</key>
+<catalog>com.ascential.acs.auditing.server.impl.resources.StringData</catalog>
+<param>admin</param>
+<param>ppds1</param>
+</record>
+<record>
+<date>2009-05-21T16:27:53</date>
+<millis>1242937673989</millis>
+<sequence>375</sequence>
+<logger>com.ibm.is.auditing</logger>
+<level>INFO</level>
+<thread>45</thread>
+<message>LOGOUT (admin): UserID="admin", Client="Web Console", Origin="localhost",
+SessionID="1C8D5CFD-269B-400F-8187-788D93681B09"</message>
+<key>info.audit.session.LOGOUT</key>
+<catalog>com.ascential.acs.auditing.server.impl.resources.StringData</catalog>
+<param>admin</param>
+<param>admin</param>
+<param>Web Console</param>
+<param>localhost</param>
+<param>1C8D5CFD-269B-400F-8187-788D93681B09</param>
+</record>
+</log>
